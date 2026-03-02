@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earth Doctors — Fine Fermentation. Live Fire. Microbial Intelligence.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --deep-earth: #1a1612;
+  --dark-forest: #1c2a1f;
+  --forest-green: #2d4a35;
+  --moss: #4a6b4a;
+  --sage: #7a9a7a;
+  --warm-brown: #6b4c3b;
+  --clay: #8b6d5c;
+  --sand: #c4a882;
+  --linen: #e8ddd0;
+  --cream: #f5f0e8;
+  --warm-white: #faf7f2;
+  --navy: #1a2a3a;
+  --navy-deep: #0f1a26;
+  --navy-mid: #2a3e52;
+  --ember: #c4713b;
+  --ember-glow: #d4915b;
+  --charcoal: #2a2420;
+  --text-primary: #1a1612;
+  --text-secondary: #5a4d40;
+  --text-light: #8a7d70;
+  --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --sans: 'Jost', 'Helvetica Neue', sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text-primary);
+  background: var(--warm-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== PAGE SYSTEM ===== */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav.scrolled {
+  background: rgba(26, 22, 18, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 3rem;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream);
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo span { font-weight: 300; opacity: 0.6; display: block; font-size: 0.55em; letter-spacing: 0.3em; margin-top: 2px; }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--ember);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active-link { color: var(--cream); }
+.nav-links a.active-link::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--sans) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.2em !important;
+  padding: 0.6rem 1.6rem;
+  border: 1px solid rgba(196, 113, 59, 0.5);
+  color: var(--ember-glow) !important;
+  transition: all 0.4s !important;
+}
+.nav-cta:hover {
+  background: var(--ember);
+  color: var(--cream) !important;
+  border-color: var(--ember);
+}
+.nav-cta::after { display: none !important; }
+
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.nav-toggle span {
+  width: 24px; height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s;
+}
+
+/* ===== HERO SECTIONS ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3) saturate(0.8);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 26, 38, 0.6) 0%,
+    rgba(26, 22, 18, 0.5) 40%,
+    rgba(26, 22, 18, 0.85) 100%
+  );
+}
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+  animation: heroFadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ember-glow);
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--sand);
+}
+.hero-sub {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(245, 240, 232, 0.9);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  letter-spacing: 0.02em;
+}
+.hero-ctas { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 2.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary {
+  background: var(--ember);
+  color: var(--cream);
+  border: 1px solid var(--ember);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--ember-glow);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(245, 240, 232, 0.25);
+}
+.btn-ghost:hover {
+  border-color: var(--cream);
+  background: rgba(245, 240, 232, 0.05);
+}
+.btn-dark {
+  background: var(--charcoal);
+  color: var(--cream);
+  border: 1px solid var(--charcoal);
+}
+.btn-dark:hover {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  color: rgba(245, 240, 232, 0.4);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.4), transparent);
+}
+
+/* ===== SECTION LAYOUTS ===== */
+.section {
+  padding: 7rem 3rem;
+}
+.section-dark {
+  background: var(--deep-earth);
+  color: var(--cream);
+}
+.section-forest {
+  background: var(--dark-forest);
+  color: var(--cream);
+}
+.section-navy {
+  background: var(--navy-deep);
+  color: var(--cream);
+}
+.section-cream {
+  background: var(--cream);
+}
+.section-linen {
+  background: var(--linen);
+}
+.section-warm {
+  background: var(--warm-white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.section-title em { font-style: italic; }
+.section-text {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #4a3f34;
+  max-width: 600px;
+}
+.section-dark .section-text,
+.section-forest .section-text,
+.section-navy .section-text {
+  color: rgba(245, 240, 232, 0.82);
+}
+
+/* Divider */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--ember);
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+/* ===== HOME: PHILOSOPHY ===== */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.philosophy-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.pillar {
+  padding: 2rem;
+  border: 1px solid rgba(196, 113, 59, 0.15);
+  transition: all 0.4s;
+}
+.pillar:hover {
+  border-color: rgba(196, 113, 59, 0.4);
+  background: rgba(196, 113, 59, 0.03);
+}
+.pillar-icon {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--ember);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.pillar h4 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  color: var(--cream);
+}
+.pillar p {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.75);
+}
+
+/* Visual panel */
+.visual-panel {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+.visual-panel-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dark-forest), var(--navy-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visual-panel-inner {
+  text-align: center;
+  padding: 3rem;
+}
+.visual-panel-inner .big-quote {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--sand);
+}
+.visual-panel-accent {
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 80px; height: 80px;
+  border-top: 1px solid var(--ember);
+  border-right: 1px solid var(--ember);
+  opacity: 0.4;
+}
+.visual-panel-accent-bl {
+  position: absolute;
+  bottom: -1px; left: -1px;
+  width: 80px; height: 80px;
+  border-bottom: 1px solid var(--ember);
+  border-left: 1px solid var(--ember);
+  opacity: 0.4;
+}
+
+/* ===== HOME: SERVICES PREVIEW ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(196, 113, 59, 0.1);
+  margin-top: 3rem;
+}
+.service-card {
+  background: var(--cream);
+  padding: 3rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 2.5rem; right: 2.5rem;
+  height: 2px;
+  background: var(--ember);
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover { background: var(--warm-white); }
+.service-num {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.service-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+.service-card p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #4a3f34;
+  margin-bottom: 1.5rem;
+}
+.service-link {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s;
+}
+.service-link:hover { gap: 0.8rem; }
+.service-link svg { width: 14px; height: 14px; }
+
+/* ===== HOME: FEATURED FERMENTS ===== */
+.ferments-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.ferment-item {
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ferment-item:hover { transform: translateY(-8px); }
+.ferment-visual {
+  aspect-ratio: 3/4;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.ferment-visual-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ferment-item:hover .ferment-visual-inner { transform: scale(1.03); }
+.ferment-tag {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  background: rgba(26, 22, 18, 0.8);
+  color: var(--ember-glow);
+  backdrop-filter: blur(10px);
+}
+.ferment-item h4 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+.ferment-item .price {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 300;
+}
+.ferment-item .ferment-desc {
+  font-size: 0.78rem;
+  color: #4a3f34;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-top: 0.4rem;
+}
+
+/* ===== HOME: TESTIMONIAL ===== */
+.testimonial-section {
+  text-align: center;
+  padding: 8rem 3rem;
+}
+.testimonial-quote {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--warm-white);
+  max-width: 750px;
+  margin: 0 auto 2rem;
+}
+.testimonial-attr {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember-glow);
+}
+
+/* ===== SHOP PAGE ===== */
+.shop-hero {
+  height: 50vh;
+  min-height: 400px;
+}
+.shop-categories {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cat-btn {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(26, 22, 18, 0.15);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.cat-btn:hover, .cat-btn.active {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(196, 113, 59, 0.05);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.product-card {
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-image {
+  aspect-ratio: 1;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+.product-image-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s;
+}
+.product-card:hover .product-image-inner { transform: scale(1.04); }
+.product-badge {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  color: var(--cream);
+}
+.badge-seasonal { background: var(--forest-green); }
+.badge-limited { background: var(--ember); }
+.badge-new { background: var(--navy); }
+.product-card h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+.product-meta {
+  font-size: 0.78rem;
+  color: #4a3f34;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.product-price {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+.product-add {
+  margin-top: 0.8rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--text-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--text-primary);
+}
+.product-add:hover {
+  background: var(--text-primary);
+  color: var(--cream);
+}
+
+/* Product detail overlay */
+.product-detail {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(15, 26, 38, 0.85);
+  backdrop-filter: blur(20px);
+  align-items: center;
+  justify-content: center;
+}
+.product-detail.open { display: flex; }
+.product-detail-inner {
+  background: var(--warm-white);
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.product-detail-visual {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.product-detail-info {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.product-detail-info h2 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.product-detail-info .detail-price {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+.product-detail-info .detail-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #4a3f34;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.detail-section-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.6rem;
+  margin-top: 1.5rem;
+}
+.detail-section-text {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: #4a3f34;
+  font-weight: 300;
+}
+.close-detail {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: var(--charcoal);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.close-detail:hover { background: var(--ember); }
+
+/* ===== RETREATS PAGE ===== */
+.retreat-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(196, 113, 59, 0.15);
+  margin-top: 3rem;
+}
+.retreat-card {
+  background: var(--deep-earth);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.5s;
+}
+.retreat-card:hover { background: var(--charcoal); }
+.retreat-card.featured {
+  background: var(--navy-deep);
+  position: relative;
+}
+.retreat-card.featured::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: 0; left: 2.5rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  background: var(--ember);
+  color: var(--cream);
+}
+.retreat-card h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.retreat-duration {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ember-glow);
+  margin-bottom: 1.5rem;
+}
+.retreat-price {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 0.3rem;
+}
+.retreat-price-note {
+  font-size: 0.75rem;
+  color: rgba(245, 240, 232, 0.65);
+  margin-bottom: 2rem;
+}
+.retreat-features {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+.retreat-features li {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 232, 0.82);
+  font-weight: 300;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.retreat-features li::before {
+  content: '—';
+  color: var(--ember);
+  font-size: 0.7rem;
+}
+.retreat-includes {
+  margin-top: 3rem;
+}
+.include-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.include-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px solid rgba(196, 113, 59, 0.12);
+}
+.include-item h4 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.include-item p {
+  font-size: 0.78rem;
+  color: #4a3f34;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ===== EDUCATION PAGE ===== */
+.courses-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 3rem;
+}
+.course-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 3rem;
+  padding: 2.5rem 3rem;
+  align-items: center;
+  background: var(--warm-white);
+  border-left: 3px solid transparent;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.course-row:hover {
+  border-left-color: var(--ember);
+  background: var(--cream);
+}
+.course-level {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.course-info h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+.course-info p {
+  font-size: 0.82rem;
+  color: #4a3f34;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.course-meta-right {
+  text-align: right;
+  min-width: 140px;
+}
+.course-price-tag {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.course-format {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6b5d50;
+}
+.tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.track-card {
+  padding: 3rem;
+  border: 1px solid rgba(196,113,59,0.12);
+  transition: border-color 0.3s;
+}
+.track-card:hover { border-color: var(--ember); }
+.track-card h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.track-card p {
+  font-size: 0.85rem;
+  color: #4a3f34;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== JOURNAL PAGE ===== */
+.journal-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.journal-featured {
+  cursor: pointer;
+}
+.journal-featured-image {
+  aspect-ratio: 16/10;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.journal-featured-image-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s;
+}
+.journal-featured:hover .journal-featured-image-inner { transform: scale(1.03); }
+.journal-featured h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 0.7rem;
+  transition: color 0.3s;
+}
+.journal-featured:hover h3 { color: var(--ember); }
+.journal-featured p {
+  font-size: 0.88rem;
+  color: #4a3f34;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.journal-date {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.8rem;
+}
+.journal-list { display: flex; flex-direction: column; gap: 1px; }
+.journal-list-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(26, 22, 18, 0.08);
+  cursor: pointer;
+  transition: padding-left 0.3s;
+}
+.journal-list-item:hover { padding-left: 1rem; }
+.journal-list-item h4 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s;
+}
+.journal-list-item:hover h4 { color: var(--ember); }
+.journal-list-item p {
+  font-size: 0.8rem;
+  color: #5a4d40;
+  font-weight: 300;
+}
+
+/* ===== ABOUT/FOUNDER PAGE ===== */
+.founder-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.founder-visual {
+  position: sticky;
+  top: 120px;
+}
+.founder-portrait {
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.founder-portrait-accent {
+  position: absolute;
+  top: 2rem; left: -2rem;
+  width: calc(100% + 2rem);
+  height: calc(100% - 2rem);
+  border: 1px solid rgba(196,113,59,0.15);
+  z-index: -1;
+}
+.founder-content h2 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+.founder-content p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 2;
+  color: #4a3f34;
+  margin-bottom: 1.5rem;
+}
+.founder-content p.lead {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-style: italic;
+}
+.credentials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(26,22,18,0.1);
+}
+.credential {
+  padding: 1.5rem;
+  background: var(--cream);
+}
+.credential h5 {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.4rem;
+}
+.credential p {
+  font-size: 0.82rem;
+  color: #4a3f34;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+/* ===== CONTACT / BOOKING ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 0.8rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245,240,232,0.2);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-bottom-color: var(--ember);
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-group select option { background: var(--deep-earth); color: var(--cream); }
+
+.contact-info h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+.contact-info p {
+  font-size: 0.88rem;
+  color: rgba(245, 240, 232, 0.78);
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+.contact-detail {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.contact-detail-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.2rem;
+}
+.contact-detail-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 300;
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter {
+  text-align: center;
+  padding: 5rem 3rem;
+  border-top: 1px solid rgba(196,113,59,0.1);
+}
+.newsletter h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+}
+.newsletter p {
+  font-size: 0.85rem;
+  color: #4a3f34;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.newsletter-form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.newsletter-form input {
+  flex: 1;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid rgba(26,22,18,0.15);
+  border-right: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  outline: none;
+  color: var(--text-primary);
+}
+.newsletter-form input:focus { border-color: var(--ember); }
+.newsletter-form button {
+  padding: 0.9rem 1.8rem;
+  background: var(--charcoal);
+  color: var(--cream);
+  border: 1px solid var(--charcoal);
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.newsletter-form button:hover {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--deep-earth);
+  color: var(--cream);
+  padding: 5rem 3rem 3rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.footer-brand span {
+  font-weight: 300;
+  opacity: 0.5;
+  display: block;
+  font-size: 0.5em;
+  letter-spacing: 0.3em;
+  margin-top: 4px;
+}
+.footer-tagline {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 232, 0.65);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 320px;
+}
+.footer h4 {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 1.5rem;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.8rem; }
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 232, 0.65);
+  text-decoration: none;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245,240,232,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(245, 240, 232, 0.5);
+  font-weight: 300;
+}
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-social a {
+  font-size: 0.72rem;
+  color: rgba(232,221,208,0.4);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+.footer-social a:hover { color: var(--ember-glow); }
+
+/* ===== COLOR FILLS FOR PLACEHOLDERS ===== */
+.bg-miso {
+  background: linear-gradient(135deg, #3d2e1f 0%, #5a4030 40%, #4a3525 100%);
+}
+.bg-koji {
+  background: linear-gradient(135deg, #2a3a2a 0%, #3d4d35 50%, #2d3d28 100%);
+}
+.bg-kraut {
+  background: linear-gradient(135deg, #1a2a1a 0%, #2d4d2d 50%, #1f3520 100%);
+}
+.bg-sauce {
+  background: linear-gradient(135deg, #3d1f1f 0%, #5a3030 50%, #4a2525 100%);
+}
+.bg-elixir {
+  background: linear-gradient(135deg, #1a2a3a 0%, #2a3d52 50%, #1f3045 100%);
+}
+.bg-tools {
+  background: linear-gradient(135deg, #2a2420 0%, #3d3530 50%, #322c25 100%);
+}
+.bg-retreat {
+  background: linear-gradient(160deg, #1a2a1a 0%, #0f1a0f 30%, #1a1612 100%);
+}
+.bg-fire {
+  background: linear-gradient(135deg, #2a1a10 0%, #3d2a15 50%, #4a3020 100%);
+}
+.bg-earth {
+  background: linear-gradient(160deg, #1c2a1f 0%, #1a1612 60%, #0f1a26 100%);
+}
+.bg-founder {
+  background: linear-gradient(135deg, #2a3a2a 0%, #1a2a1a 50%, #1c2a1f 100%);
+}
+.bg-journal {
+  background: linear-gradient(135deg, #1a2a3a 0%, #1c2a1f 50%, #1a1612 100%);
+}
+
+/* Emoji icon replacement for visual interest */
+.visual-icon {
+  font-size: 3rem;
+  opacity: 0.6;
+  display: block;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .ferments-showcase { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .retreat-tiers { grid-template-columns: 1fr; }
+  .include-grid { grid-template-columns: repeat(2, 1fr); }
+  .founder-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .founder-visual { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .product-detail-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 22, 18, 0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 999;
+  }
+  .nav-links.open a { font-size: 1rem; color: var(--cream); }
+  .section { padding: 4rem 1.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .ferments-showcase { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .journal-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .course-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 1.5rem; }
+  .course-meta-right { text-align: left; margin-top: 0.5rem; }
+  .tracks { grid-template-columns: 1fr; }
+  .credentials { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .include-grid { grid-template-columns: 1fr; }
+  .philosophy-pillars { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { border-right: 1px solid rgba(26,22,18,0.15); }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo" onclick="showPage('home')">
+    Earth Doctors
+    <span>Fine Fermentation & Live Fire</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="showPage('home')" data-page="home" class="active-link">Home</a>
+    <a onclick="showPage('philosophy')" data-page="philosophy">Philosophy</a>
+    <a onclick="showPage('shop')" data-page="shop">Atelier</a>
+    <a onclick="showPage('retreats')" data-page="retreats">Retreats</a>
+    <a onclick="showPage('education')" data-page="education">Education</a>
+    <a onclick="showPage('journal')" data-page="journal">Journal</a>
+    <a onclick="showPage('contact')" data-page="contact" class="nav-cta">Begin</a>
+  </div>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===================== PAGE 1: HOME ===================== -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" id="heroImage"></div>
+    <!-- Fallback: Mount Shasta / Shasta forest imagery from Unsplash -->
+    <style>
+      #heroImage {
+        background-color: var(--dark-forest);
+        background-image:
+          url('https://images.unsplash.com/photo-1511497584788-876760111969?w=1920&q=80&auto=format&fit=crop');
+        background-position: center 35%;
+      }
+    </style>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Mount Shasta · Bunny Flats</div>
+      <h1>Where Fire, Earth &amp; Microbes <em>Refine</em> the Human System</h1>
+      <p class="hero-sub">Michelin-level fermentation, elemental live-fire cuisine, and microbiome education rooted in the wild intelligence of Mount Shasta.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" onclick="showPage('shop')">Explore the Ferments</a>
+        <a class="btn btn-ghost" onclick="showPage('retreats')">Enter the Retreat</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Discover</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Philosophy preview -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="reveal">
+          <div class="section-label">The Work</div>
+          <h2 class="section-title" style="color:var(--cream)">We Do Not <em>Prepare</em> Food.<br>We Cultivate Living Systems.</h2>
+          <div class="divider"></div>
+          <p class="section-text">Fire transforms. Earth stabilizes. Microbes refine. Time perfects. Fermentation is not preservation — it is biological intelligence guided with precision. The microbiome is not a trend — it is the foundation of clarity, mood, immunity, and long-term vitality.</p>
+          <div class="philosophy-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">⟡</div>
+              <h4>Fire</h4>
+              <p>Live-fire cooking through rocket stoves and earth ovens built on sacred ground.</p>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">◈</div>
+              <h4>Earth</h4>
+              <p>Regenerative soil intelligence. What grows from the ground shapes what lives within us.</p>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">⬡</div>
+              <h4>Microbes</h4>
+              <p>Fermentation as microbial mastery — cultivating trillions of allies for human clarity.</p>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">◯</div>
+              <h4>Time</h4>
+              <p>Aging, patience, precision. The silent architecture behind every great ferment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="visual-panel reveal">
+          <div class="visual-panel-bg">
+            <div class="visual-panel-inner">
+              <div class="big-quote">"Everything we create is designed to restore digestive coherence and awaken sensory awareness."</div>
+            </div>
+          </div>
+          <div class="visual-panel-accent"></div>
+          <div class="visual-panel-accent-bl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="section section-cream">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:1rem" class="reveal">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">The Earth Doctors <em>Practice</em></h2>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card" onclick="showPage('retreats')">
+          <div class="service-num">01</div>
+          <h3>Elemental Retreats</h3>
+          <p>Immersive laboratories of fire and microbial craft at Bunny Flats, Mount Shasta. Build rocket stoves. Bake in earth ovens. Study microbiome mechanics.</p>
+          <a class="service-link">Explore Retreats <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" onclick="showPage('shop')">
+          <div class="service-num">02</div>
+          <h3>Fermentation Atelier</h3>
+          <p>Small-batch, seasonally aged, microbiome-intelligent foods. Koji ferments, long-aged miso, wild krauts, fire-fermented sauces, and tonic elixirs.</p>
+          <a class="service-link">Enter the Atelier <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" onclick="showPage('education')">
+          <div class="service-num">03</div>
+          <h3>Microbiome Education</h3>
+          <p>From fermentation foundations to advanced koji techniques. Structured learning for chefs, wellness practitioners, and devoted home fermenters.</p>
+          <a class="service-link">View Courses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" onclick="showPage('contact')">
+          <div class="service-num">04</div>
+          <h3>Private Fire Dining</h3>
+          <p>Live-fire tasting experiences for private gatherings. We build the kitchen. We build the oven. We build the experience. Elemental cuisine, refined execution.</p>
+          <a class="service-link">Inquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" onclick="showPage('contact')">
+          <div class="service-num">05</div>
+          <h3>Garden & Soil Consulting</h3>
+          <p>Before fermentation, there is soil. Regenerative garden systems optimized for microbial vitality and nutrient density. From earth to table.</p>
+          <a class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" onclick="showPage('contact')">
+          <div class="service-num">06</div>
+          <h3>One-on-One Mentorship</h3>
+          <p>Personalized guidance for digestive clarity, microbiome education, fermentation integration, and nervous system stabilization through food.</p>
+          <a class="service-link">Begin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Ferments -->
+  <section class="section section-warm">
+    <div class="container">
+      <div class="reveal" style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">
+        <div>
+          <div class="section-label">From the Atelier</div>
+          <h2 class="section-title">Featured <em>Ferments</em></h2>
+        </div>
+        <a class="btn btn-dark" onclick="showPage('shop')">View All</a>
+      </div>
+      <div class="ferments-showcase reveal">
+        <div class="ferment-item" onclick="showPage('shop')">
+          <div class="ferment-visual">
+            <div class="ferment-visual-inner bg-miso"><span class="visual-icon">𝕸</span></div>
+            <div class="ferment-tag">18-Month Aged</div>
+          </div>
+          <h4>Hatcho-Style Miso</h4>
+          <div class="price">$48</div>
+          <div class="ferment-desc">Deep umami, dark caramel complexity. Pure soybean, sea salt, time.</div>
+        </div>
+        <div class="ferment-item" onclick="showPage('shop')">
+          <div class="ferment-visual">
+            <div class="ferment-visual-inner bg-koji"><span class="visual-icon">𝕶</span></div>
+            <div class="ferment-tag">Limited</div>
+          </div>
+          <h4>Shio Koji</h4>
+          <div class="price">$32</div>
+          <div class="ferment-desc">Living enzymatic marinade. Transforms protein at the molecular level.</div>
+        </div>
+        <div class="ferment-item" onclick="showPage('shop')">
+          <div class="ferment-visual">
+            <div class="ferment-visual-inner bg-sauce"><span class="visual-icon">𝕱</span></div>
+            <div class="ferment-tag">Seasonal</div>
+          </div>
+          <h4>Fire-Fermented Chili</h4>
+          <div class="price">$28</div>
+          <div class="ferment-desc">Smoked over live oak. Lacto-fermented. Deep heat with microbial depth.</div>
+        </div>
+        <div class="ferment-item" onclick="showPage('shop')">
+          <div class="ferment-visual">
+            <div class="ferment-visual-inner bg-elixir"><span class="visual-icon">𝕰</span></div>
+            <div class="ferment-tag">New</div>
+          </div>
+          <h4>Adaptogen Kvass</h4>
+          <div class="price">$22</div>
+          <div class="ferment-desc">Beetroot, reishi, ginger. Living probiotic tonic for daily microbiome support.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section section-navy testimonial-section reveal">
+    <div class="hero-texture" style="position:absolute;inset:0"></div>
+    <div class="container-narrow" style="position:relative;z-index:1">
+      <div class="section-label" style="text-align:center;margin-bottom:2rem">Words from Guests</div>
+      <div class="testimonial-quote">"I came for a weekend retreat and left with an entirely new relationship to food, digestion, and stillness. This is not cooking instruction — this is recalibration."</div>
+      <div class="testimonial-attr">— Retreat Guest, Bunny Flats Immersion</div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container-narrow reveal">
+      <div class="section-label">Stay Connected</div>
+      <h3>The Earth Doctors Dispatch</h3>
+      <p>Seasonal fermentation insights, microbiome research, retreat announcements, and limited drops.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE 2: PHILOSOPHY ===================== -->
+<div class="page" id="page-philosophy">
+  <section class="hero" style="height:60vh;min-height:400px">
+    <div class="hero-bg bg-retreat"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Our Philosophy</div>
+      <h1>Fire. Earth. Microbes. <em>Time.</em></h1>
+      <p class="hero-sub">Four elemental forces shape everything we create, teach, and share.</p>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container-narrow reveal">
+      <p class="section-text" style="max-width:100%;font-size:1.05rem;line-height:2;color:var(--text-primary);font-family:var(--serif)">
+        At Earth Doctors, we do not "prepare food." We cultivate living systems. We believe fermentation is not mere preservation — it is biological intelligence guided with precision. The microbiome is not a wellness trend — it is the foundational ecology of human clarity, mood regulation, immune function, and longevity.
+      </p>
+      <div class="divider" style="margin:3rem 0"></div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem" class="reveal">
+        <div>
+          <div class="section-label">Fire</div>
+          <h2 class="section-title" style="color:var(--cream)">The <em>Primordial</em> Kitchen</h2>
+          <p class="section-text" style="margin-top:1.5rem">In the forests beneath Mount Shasta, we build our kitchens from earth and stone. Rocket stoves. Earthen ovens. Live-fire grills. From these elements, cuisine emerges — slow, intentional, microbial, precise. Fire is not decoration. Fire is transformation. It changes mineral bioavailability, activates enzymes, and creates flavor compounds no oven can replicate.</p>
+        </div>
+        <div>
+          <div class="section-label">Earth</div>
+          <h2 class="section-title" style="color:var(--cream)">Before Fermentation, <em>Soil</em></h2>
+          <p class="section-text" style="margin-top:1.5rem">The microbial landscape of our gut mirrors the microbial landscape of living soil. When we destroy soil biology through industrial agriculture, we destroy the very template our bodies need for digestive intelligence. At Earth Doctors, we begin every protocol with the ground itself — regenerative soil systems that produce nutrient-dense, microbially rich ingredients.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:5rem" class="reveal">
+        <div>
+          <div class="section-label">Microbes</div>
+          <h2 class="section-title" style="color:var(--cream)"><em>Cultivating</em> Trillions of Allies</h2>
+          <p class="section-text" style="margin-top:1.5rem">Fermentation is the oldest biotechnology on earth — and the most sophisticated. Through koji cultivation, lacto-fermentation, and extended aging, we guide microbial communities to create foods that don't just taste extraordinary, but actively support the gut-brain axis, immune modulation, and neurochemical balance.</p>
+        </div>
+        <div>
+          <div class="section-label">Time</div>
+          <h2 class="section-title" style="color:var(--cream)">The Silent <em>Architect</em></h2>
+          <p class="section-text" style="margin-top:1.5rem">An 18-month miso cannot be rushed. A properly developed koji culture requires precise temperature windows measured in hours. Time is the invisible ingredient in every great ferment — the patience to allow microbial intelligence to fully express itself. We honor this by never cutting corners and never compromising on aging protocols.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream" style="text-align:center">
+    <div class="container-narrow reveal">
+      <div class="section-label">The Commitment</div>
+      <h2 class="section-title">This is Not Rustic <em>Homesteading</em>.<br>This is Elemental Fine Dining.</h2>
+      <div class="divider" style="margin:2rem auto"></div>
+      <p class="section-text" style="max-width:100%;margin:0 auto">Everything we create — from live-fire tasting menus to aged miso — is designed to restore digestive coherence and awaken sensory awareness. We bridge the gap between ancestral wisdom and modern microbiome science, between the sacred kitchen and the laboratory.</p>
+      <a class="btn btn-dark" style="margin-top:2.5rem" onclick="showPage('contact')">Begin Your Journey</a>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE 3: SHOP / ATELIER ===================== -->
+<div class="page" id="page-shop">
+  <section class="hero shop-hero">
+    <div class="hero-bg bg-miso"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">The Fermentation Atelier</div>
+      <h1>Small-Batch. Seasonally Aged. <em>Microbiome-Intelligent.</em></h1>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container">
+      <div class="shop-categories reveal">
+        <button class="cat-btn active" onclick="filterCat(this, 'all')">All</button>
+        <button class="cat-btn" onclick="filterCat(this, 'koji')">Koji & Miso</button>
+        <button class="cat-btn" onclick="filterCat(this, 'kraut')">Wild Krauts</button>
+        <button class="cat-btn" onclick="filterCat(this, 'sauce')">Fire Sauces</button>
+        <button class="cat-btn" onclick="filterCat(this, 'elixir')">Tonic Elixirs</button>
+        <button class="cat-btn" onclick="filterCat(this, 'tools')">Tools & Kits</button>
+      </div>
+      <div class="products-grid reveal" id="productsGrid">
+        <!-- Products rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription section -->
+  <section class="section section-dark">
+    <div class="container" style="text-align:center">
+      <div class="reveal">
+        <div class="section-label">Monthly Offering</div>
+        <h2 class="section-title" style="color:var(--cream)">The Earth Cycle <em>Ferment Box</em></h2>
+        <p class="section-text" style="max-width:100%;margin:0 auto 2.5rem;text-align:center">A curated monthly selection of seasonal ferments, microbiome education, and culinary pairing guides. Delivered to your door, aligned with the rhythms of the harvest cycle.</p>
+        <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap">
+          <div style="padding:2.5rem;border:1px solid rgba(196,113,59,0.2);min-width:220px">
+            <div style="font-family:var(--serif);font-size:2rem;color:var(--sand);margin-bottom:0.5rem">$68</div>
+            <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:1rem">Monthly</div>
+            <p style="font-size:0.82rem;color:rgba(245,240,232,0.78);font-weight:300">3 seasonal ferments + tasting notes + microbiome guide</p>
+          </div>
+          <div style="padding:2.5rem;border:1px solid var(--ember);min-width:220px;background:rgba(196,113,59,0.05)">
+            <div style="font-family:var(--serif);font-size:2rem;color:var(--sand);margin-bottom:0.5rem">$180</div>
+            <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:1rem">Quarterly</div>
+            <p style="font-size:0.82rem;color:rgba(245,240,232,0.78);font-weight:300">6 ferments + retreat discount + extended protocol guide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Product Detail Overlay -->
+<div class="product-detail" id="productDetail">
+  <button class="close-detail" onclick="closeDetail()">✕</button>
+  <div class="product-detail-inner" id="productDetailInner">
+    <!-- Filled by JS -->
+  </div>
+</div>
+
+<!-- ===================== PAGE 4: RETREATS ===================== -->
+<div class="page" id="page-retreats">
+  <section class="hero" style="height:60vh;min-height:400px">
+    <div class="hero-bg bg-fire"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Elemental Fermentation Immersions</div>
+      <h1>Enter the Fire. <em>Enter the Earth.</em></h1>
+      <p class="hero-sub">Live-fire culinary immersions at Bunny Flats, Mount Shasta. Build. Cook. Ferment. Transform.</p>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2rem">
+        <div class="section-label">Choose Your Immersion</div>
+        <h2 class="section-title">Retreat <em>Experiences</em></h2>
+      </div>
+      <div class="retreat-tiers reveal">
+        <div class="retreat-card">
+          <h3>Weekend Immersion</h3>
+          <div class="retreat-duration">2 Days · Friday – Sunday</div>
+          <div class="retreat-price">$1,200</div>
+          <div class="retreat-price-note">Per person · All-inclusive</div>
+          <ul class="retreat-features">
+            <li>Earth oven construction workshop</li>
+            <li>Rocket stove culinary sessions</li>
+            <li>Fermentation foundations class</li>
+            <li>Fire-cooked tasting menu</li>
+            <li>Morning stillness practice</li>
+            <li>Take-home fermentation starter</li>
+          </ul>
+          <a class="btn btn-primary" onclick="showPage('contact')">Reserve Your Spot</a>
+        </div>
+        <div class="retreat-card featured">
+          <h3>5-Day Chef Intensive</h3>
+          <div class="retreat-duration">5 Days · Monday – Friday</div>
+          <div class="retreat-price">$3,400</div>
+          <div class="retreat-price-note">Per person · All-inclusive</div>
+          <ul class="retreat-features">
+            <li>Everything in Weekend Immersion</li>
+            <li>Advanced koji cultivation lab</li>
+            <li>Miso and long-age fermentation</li>
+            <li>Microbiome education deep dive</li>
+            <li>Multi-course fire-tasting experience</li>
+            <li>Digestive reset protocol</li>
+            <li>Guided fermentation garden tour</li>
+            <li>Personal mentorship session</li>
+          </ul>
+          <a class="btn btn-primary" onclick="showPage('contact')">Reserve Your Spot</a>
+        </div>
+        <div class="retreat-card">
+          <h3>Private Group Experience</h3>
+          <div class="retreat-duration">Custom Duration</div>
+          <div class="retreat-price">Inquire</div>
+          <div class="retreat-price-note">Groups of 4–12 · Custom design</div>
+          <ul class="retreat-features">
+            <li>Fully customized curriculum</li>
+            <li>Private fire-dining experience</li>
+            <li>On-site oven and stove build</li>
+            <li>Personalized microbiome protocol</li>
+            <li>Team or family immersion</li>
+            <li>Exclusive location access</li>
+          </ul>
+          <a class="btn btn-primary" onclick="showPage('contact')">Begin a Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="reveal" style="text-align:center">
+        <div class="section-label">What's Included</div>
+        <h2 class="section-title">The Retreat <em>Experience</em></h2>
+      </div>
+      <div class="include-grid reveal">
+        <div class="include-item">
+          <h4>Live Fire Cooking</h4>
+          <p>Build and cook from rocket stoves and earth ovens constructed on-site from local materials.</p>
+        </div>
+        <div class="include-item">
+          <h4>Fermentation Lab</h4>
+          <p>Hands-on fermentation sessions covering koji, miso, krauts, sauces, and tonic elixirs.</p>
+        </div>
+        <div class="include-item">
+          <h4>Microbiome Education</h4>
+          <p>Gut-brain axis science, digestive protocol design, and microbial intelligence for daily life.</p>
+        </div>
+        <div class="include-item">
+          <h4>Tasting Menus</h4>
+          <p>Multi-course fire-cooked meals featuring seasonal ferments and foraged ingredients.</p>
+        </div>
+        <div class="include-item">
+          <h4>Morning Practice</h4>
+          <p>Guided stillness, breathwork, and embodiment practices to cultivate presence and digestion.</p>
+        </div>
+        <div class="include-item">
+          <h4>Garden Intelligence</h4>
+          <p>Soil biology tours, regenerative growing principles, and fermentation-forward crop planning.</p>
+        </div>
+        <div class="include-item">
+          <h4>Take-Home Cultures</h4>
+          <p>Leave with living starter cultures, fermentation tools, and a personalized protocol guide.</p>
+        </div>
+        <div class="include-item">
+          <h4>Community Access</h4>
+          <p>Entry to the Earth Doctors Collective — ongoing support, seasonal drops, and future retreat priority.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE 5: EDUCATION ===================== -->
+<div class="page" id="page-education">
+  <section class="hero" style="height:55vh;min-height:380px">
+    <div class="hero-bg bg-koji"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Structured Learning</div>
+      <h1>Mastery Through <em>Microbial Intelligence</em></h1>
+      <p class="hero-sub">From fermentation foundations to advanced koji techniques. Education for chefs, practitioners, and devoted home fermenters.</p>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Course Ladder</div>
+        <h2 class="section-title">Progression <em>Path</em></h2>
+      </div>
+      <div class="courses-ladder reveal">
+        <div class="course-row">
+          <div class="course-level">Level 01</div>
+          <div class="course-info">
+            <h3>Fermentation Foundations</h3>
+            <p>The essential science and practice of lacto-fermentation, salt ratios, vessel selection, and microbial cultivation for beginners.</p>
+          </div>
+          <div class="course-meta-right">
+            <div class="course-price-tag">$197</div>
+            <div class="course-format">Digital Course</div>
+          </div>
+        </div>
+        <div class="course-row">
+          <div class="course-level">Level 02</div>
+          <div class="course-info">
+            <h3>Microbiome for Mental Clarity</h3>
+            <p>The gut-brain axis decoded. Fermented food protocols for mood regulation, focus, and neurochemical balance.</p>
+          </div>
+          <div class="course-meta-right">
+            <div class="course-price-tag">$297</div>
+            <div class="course-format">Digital Course</div>
+          </div>
+        </div>
+        <div class="course-row">
+          <div class="course-level">Level 03</div>
+          <div class="course-info">
+            <h3>Fire & Ferment Masterclass</h3>
+            <p>Live-fire cooking techniques meets fermentation science. Rocket stoves, earth ovens, smoke fermentation, and elemental cuisine.</p>
+          </div>
+          <div class="course-meta-right">
+            <div class="course-price-tag">$497</div>
+            <div class="course-format">Hybrid</div>
+          </div>
+        </div>
+        <div class="course-row">
+          <div class="course-level">Level 04</div>
+          <div class="course-info">
+            <h3>Advanced Koji & Aging Techniques</h3>
+            <p>Koji cultivation, amino paste development, extended aging protocols, and enzymatic transformation for serious practitioners.</p>
+          </div>
+          <div class="course-meta-right">
+            <div class="course-price-tag">$697</div>
+            <div class="course-format">In-Person</div>
+          </div>
+        </div>
+        <div class="course-row">
+          <div class="course-level">Level 05</div>
+          <div class="course-info">
+            <h3>Digestive Reset Protocol</h3>
+            <p>A comprehensive microbiome rebuild through targeted fermentation, elimination, and reintroduction. Personal mentorship included.</p>
+          </div>
+          <div class="course-meta-right">
+            <div class="course-price-tag">$997</div>
+            <div class="course-format">Mentorship</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Certification Tracks</div>
+        <h2 class="section-title">Professional <em>Pathways</em></h2>
+      </div>
+      <div class="tracks reveal">
+        <div class="track-card">
+          <h3>Chef Track</h3>
+          <p>For culinary professionals seeking to integrate fermentation science, live-fire technique, and microbiome awareness into their practice. Includes all five course levels plus a private mentorship intensive and retreat immersion.</p>
+          <a class="btn btn-dark" onclick="showPage('contact')">Apply</a>
+        </div>
+        <div class="track-card">
+          <h3>Wellness Practitioner Track</h3>
+          <p>For health coaches, nutritionists, and practitioners who want to incorporate evidence-based fermentation protocols into client work. Focused on microbiome science, digestive reset design, and food-as-medicine frameworks.</p>
+          <a class="btn btn-dark" onclick="showPage('contact')">Apply</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE 6: JOURNAL ===================== -->
+<div class="page" id="page-journal">
+  <section class="hero" style="height:50vh;min-height:350px">
+    <div class="hero-bg bg-journal"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Thought Leadership</div>
+      <h1>The Earth Doctors <em>Journal</em></h1>
+      <p class="hero-sub">Explorations at the intersection of fermentation science, microbiome intelligence, and elemental craft.</p>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container">
+      <div class="journal-grid reveal">
+        <div class="journal-featured">
+          <div class="journal-featured-image">
+            <div class="journal-featured-image-inner bg-earth" style="padding:3rem">
+              <span style="font-family:var(--serif);font-size:1.4rem;color:var(--sand);font-style:italic;font-weight:300;line-height:1.6">The microbiome is not a system to be fixed. It is an ecology to be cultivated.</span>
+            </div>
+          </div>
+          <div class="journal-date">February 2026</div>
+          <h3>The Gut-Brain Axis: Why Fermentation is Neuroscience</h3>
+          <p>Exploring the direct link between microbial diversity in the gut and cognitive clarity, emotional regulation, and long-term neuroplasticity. What the science says — and what the kitchen already knows.</p>
+        </div>
+        <div class="journal-list">
+          <div class="journal-list-item">
+            <div class="journal-date">January 2026</div>
+            <h4>Fire-Cooking and Mineral Bioavailability</h4>
+            <p>Why live-fire methods unlock nutrients that conventional cooking cannot.</p>
+          </div>
+          <div class="journal-list-item">
+            <div class="journal-date">December 2025</div>
+            <h4>Koji: The Enzymatic Architect</h4>
+            <p>Inside the mechanics of Aspergillus oryzae and its role in creating umami depth.</p>
+          </div>
+          <div class="journal-list-item">
+            <div class="journal-date">November 2025</div>
+            <h4>Soil Microbiology and Gut Parallels</h4>
+            <p>The mirrored ecosystems beneath our feet and within our bodies.</p>
+          </div>
+          <div class="journal-list-item">
+            <div class="journal-date">October 2025</div>
+            <h4>Fermentation and Neuroplasticity</h4>
+            <p>How microbial metabolites influence brain structure and adaptability.</p>
+          </div>
+          <div class="journal-list-item">
+            <div class="journal-date">September 2025</div>
+            <h4>The Sacred Kitchen: Presence as Ingredient</h4>
+            <p>On the relationship between embodied attention and the quality of what we create.</p>
+          </div>
+          <div class="journal-list-item">
+            <div class="journal-date">August 2025</div>
+            <h4>Long-Aged Miso: A Meditation on Patience</h4>
+            <p>What 18 months of microbial transformation teaches us about time and mastery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE 7: CONTACT ===================== -->
+<div class="page" id="page-contact">
+  <section class="hero" style="height:45vh;min-height:320px">
+    <div class="hero-bg bg-retreat"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Begin</div>
+      <h1>Start a <em>Conversation</em></h1>
+      <p class="hero-sub">Retreat inquiries, private dining, mentorship, wholesale partnerships, or general questions.</p>
+    </div>
+  </section>
+
+  <section class="section section-navy">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Interest</label>
+            <select>
+              <option>Select an area of interest</option>
+              <option>Retreat Experience</option>
+              <option>Private Fire Dining / Catering</option>
+              <option>One-on-One Mentorship</option>
+              <option>Garden & Soil Consulting</option>
+              <option>Education & Courses</option>
+              <option>Wholesale / Restaurant Partnership</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your interest or ask a question..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="align-self:flex-start;margin-top:0.5rem">Send Inquiry</button>
+        </div>
+        <div class="contact-info">
+          <h3>Earth Doctors</h3>
+          <p>We are based at the foot of Mount Shasta — in the forest, by the fire, among the ferments. All retreats take place on-site at Bunny Flats. Private dining and catering experiences can be arranged at your location.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">Earthdoctors@protonmail.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Bunny Flats, Mount Shasta, California</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Website</div>
+            <div class="contact-detail-value">Earthdoctorsknow.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Response Time</div>
+            <div class="contact-detail-value">Within 48 hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER (shared) ===== -->
+<footer class="footer" id="mainFooter">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          Earth Doctors
+          <span>Fine Fermentation & Live Fire</span>
+        </div>
+        <p class="footer-tagline">Michelin-level fermentation, elemental live-fire cuisine, and microbiome education rooted in the wild intelligence of Mount Shasta.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('philosophy')">Philosophy</a></li>
+          <li><a onclick="showPage('shop')">Atelier</a></li>
+          <li><a onclick="showPage('retreats')">Retreats</a></li>
+          <li><a onclick="showPage('education')">Education</a></li>
+          <li><a onclick="showPage('journal')">Journal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('retreats')">Elemental Retreats</a></li>
+          <li><a onclick="showPage('shop')">Fermentation Atelier</a></li>
+          <li><a onclick="showPage('contact')">Private Dining</a></li>
+          <li><a onclick="showPage('contact')">Garden Consulting</a></li>
+          <li><a onclick="showPage('contact')">Mentorship</a></li>
+          <li><a onclick="showPage('education')">Courses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a>Earthdoctors@protonmail.com</a></li>
+          <li><a>Facebook</a></li>
+          <li><a>Instagram</a></li>
+          <li><a>The Dispatch (Newsletter)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Earth Doctors. All rights reserved. Mount Shasta, California.</div>
+      <div class="footer-social">
+        <a>Privacy</a>
+        <a>Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== PRODUCT DATA =====
+const products = [
+  {
+    id: 1, name: "Hatcho-Style Miso", cat: "koji", price: "$48", badge: "18-Month Aged", badgeClass: "badge-limited",
+    bg: "bg-miso", desc: "Deep umami, dark caramel complexity. Pure soybean, sea salt, time.",
+    detail: "Our hatcho-style miso undergoes a minimum 18-month fermentation in ceramic vessels. This extended aging develops extraordinary depth — dark caramel, roasted cocoa, and a complex savory finish that lingers. Made from organic soybeans and natural sea salt. No accelerants. No shortcuts.",
+    microbiome: "Rich in Bacillus subtilis and diverse Lactobacillus strains. Extended aging increases bioavailable amino acids and produces unique metabolites that support gut barrier integrity.",
+    pairing: "Exceptional as a glaze for grilled proteins, dissolved into warm broths, or simply tasted on its own with aged rice. Pairs beautifully with dark bread and cultured butter.",
+    ritual: "A small spoonful dissolved in warm (not boiling) water each morning creates a living tonic that sets the digestive tone for the day."
+  },
+  {
+    id: 2, name: "Shio Koji", cat: "koji", price: "$32", badge: "Limited Batch", badgeClass: "badge-limited",
+    bg: "bg-koji", desc: "Living enzymatic marinade. Transforms protein at the molecular level.",
+    detail: "Shio koji is one of the most powerful culinary tools in the fermentation world. Our version is made with hand-cultivated Aspergillus oryzae spores on organic rice, aged with mineral-rich sea salt until the enzymes reach peak activity.",
+    microbiome: "Active protease and amylase enzymes pre-digest proteins and starches, reducing digestive burden. Contains living koji cultures that support enzymatic diversity in the gut.",
+    pairing: "Use as a marinade for any protein — chicken, fish, vegetables, tofu. 24-48 hours transforms texture completely. Also extraordinary stirred into salad dressings or finished soups.",
+    ritual: "Apply to proteins the night before cooking. Allow the enzymes to work overnight. The result: unparalleled tenderness and a depth of flavor that cannot be achieved by seasoning alone."
+  },
+  {
+    id: 3, name: "Fire-Fermented Chili Sauce", cat: "sauce", price: "$28", badge: "Seasonal", badgeClass: "badge-seasonal",
+    bg: "bg-sauce", desc: "Smoked over live oak. Lacto-fermented. Deep heat with microbial depth.",
+    detail: "Chilies roasted over live oak in our rocket stoves, then lacto-fermented for six weeks. The result is a sauce with smoke, heat, and an extraordinary microbial complexity that store-bought hot sauce cannot approach.",
+    microbiome: "Six-week lacto-fermentation produces diverse Lactobacillus strains, organic acids, and short-chain fatty acids that support colon health and microbial diversity.",
+    pairing: "Finish on grilled meats, stir into soups, drizzle over eggs, or mix into cultured butter for a fire-fermented compound butter that transforms any dish.",
+    ritual: "A few drops on your morning eggs becomes a daily practice — heat, smoke, and living cultures to begin the day with digestive intelligence."
+  },
+  {
+    id: 4, name: "Wild Shasta Kraut", cat: "kraut", price: "$24", badge: "New Harvest", badgeClass: "badge-new",
+    bg: "bg-kraut", desc: "Foraged botanicals. Local cabbage. Wild microbial cultures of Mount Shasta.",
+    detail: "Made from locally grown organic cabbage and foraged botanicals from the Mount Shasta wilderness. No starter cultures — this kraut relies entirely on the wild microbiology of the region, creating a flavor profile unique to this land.",
+    microbiome: "Wild-fermented krauts contain dramatically higher microbial diversity than cultured versions. Each batch reflects the unique terroir of Mount Shasta's microbial landscape.",
+    pairing: "As a side to any grilled protein, layered into sandwiches, or eaten by the forkful as a daily probiotic practice.",
+    ritual: "Two tablespoons before meals primes the digestive system with organic acids and living cultures, preparing the gut for optimal nutrient absorption."
+  },
+  {
+    id: 5, name: "Adaptogen Kvass", cat: "elixir", price: "$22", badge: "Seasonal", badgeClass: "badge-seasonal",
+    bg: "bg-elixir", desc: "Beetroot, reishi, ginger. Living probiotic tonic for daily microbiome support.",
+    detail: "A traditional Eastern European fermented tonic reimagined with adaptogenic mushrooms and warming ginger. Beetroot provides the sugar substrate for fermentation, while reishi contributes immunomodulatory compounds.",
+    microbiome: "Living lactic acid bacteria combined with reishi beta-glucans create a synergistic effect — microbial support meets immune modulation in a single tonic.",
+    pairing: "Best enjoyed chilled as a mid-afternoon tonic or served alongside a grain bowl. Also excellent as a base for salad dressings.",
+    ritual: "4 oz daily, between meals. Allow the living cultures to enter the gut environment without interference from heavy food."
+  },
+  {
+    id: 6, name: "Cultured Mountain Butter", cat: "koji", price: "$36", badge: "Small Batch", badgeClass: "badge-limited",
+    bg: "bg-tools", desc: "Slow-cultured cream. Complex tang. Rich golden body. A living fat.",
+    detail: "Local cream cultured over 72 hours with our proprietary blend of Lactococcus and Leuconostoc strains. Hand-churned in small batches. The result is a butter with extraordinary tang, depth, and a golden body that speaks of pasture and patience.",
+    microbiome: "Culturing cream before churning develops diverse lactic acid bacteria and increases butyrate content — a critical short-chain fatty acid for colon health and inflammation regulation.",
+    pairing: "On sourdough. With aged miso on grilled vegetables. Melted over fire-roasted corn. Or simply eaten with a pinch of flaked salt.",
+    ritual: "Replace conventional butter entirely. Every use becomes an act of microbiome support."
+  },
+  {
+    id: 7, name: "Garlic Honey Ferment", cat: "sauce", price: "$26", badge: "Year-Round", badgeClass: "badge-new",
+    bg: "bg-fire", desc: "Raw honey meets raw garlic. Aged until liquid gold. Immune-fortifying.",
+    detail: "Whole garlic cloves submerged in raw wildflower honey and fermented for a minimum of three months. The garlic softens, the honey thins, and the two create a living symbiosis of antimicrobial and prebiotic compounds.",
+    microbiome: "Raw honey provides prebiotic oligosaccharides while garlic contributes allicin and inulin. The fermentation process creates a uniquely bioavailable matrix of immune-supporting compounds.",
+    pairing: "Glaze for roasted proteins, drizzled over aged cheese, or added to warm teas during cold season.",
+    ritual: "One clove and a spoonful of the honey daily during autumn and winter months for immune resilience."
+  },
+  {
+    id: 8, name: "Fermentation Starter Kit", cat: "tools", price: "$85", badge: "Essentials", badgeClass: "badge-new",
+    bg: "bg-tools", desc: "Everything needed to begin your fermentation practice at home.",
+    detail: "A curated collection of tools and cultures to begin a home fermentation practice: ceramic fermentation crock, wooden tamper, pH strips, salt selection, detailed instruction manual, and a living kraut starter culture from our Mount Shasta batches.",
+    microbiome: "Your entry point into daily microbial cultivation. The included starter culture carries the unique microbiology of our Mount Shasta fermentation practice.",
+    pairing: "Designed to complement our Level 01 digital course, Fermentation Foundations.",
+    ritual: "Begin with a single jar of kraut. The practice of daily fermentation builds patience, presence, and microbial intelligence."
+  },
+  {
+    id: 9, name: "Earth Cycle Sampler", cat: "kraut", price: "$68", badge: "Gift Set", badgeClass: "badge-seasonal",
+    bg: "bg-earth", desc: "A curated selection of four seasonal ferments. The perfect introduction.",
+    detail: "Four of our signature ferments in smaller format: Wild Shasta Kraut, Fire-Fermented Chili Sauce, Shio Koji, and Adaptogen Kvass. Includes a printed microbiome guide and culinary pairing card.",
+    microbiome: "Four distinct fermentation methods delivering broad-spectrum microbial diversity. An ideal way to introduce varied probiotic strains to the gut ecosystem.",
+    pairing: "Designed as a complete introduction to fermented food integration — one product per meal occasion throughout the day.",
+    ritual: "Begin with one ferment per day for the first week. Add a second the following week. Gradually build the daily practice of living food."
+  }
+];
+
+// ===== RENDER PRODUCTS =====
+function renderProducts(filter = 'all') {
+  const grid = document.getElementById('productsGrid');
+  const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" onclick="openDetail(${p.id})">
+      <div class="product-image">
+        <div class="product-image-inner ${p.bg}">
+          <span style="font-family:var(--serif);font-size:2rem;color:var(--sand);font-weight:300;opacity:0.5">${p.name.charAt(0)}</span>
+        </div>
+        <div class="product-badge ${p.badgeClass}">${p.badge}</div>
+      </div>
+      <h3>${p.name}</h3>
+      <div class="product-meta">${p.desc}</div>
+      <div class="product-price">${p.price}</div>
+      <button class="product-add">Add to Cart</button>
+    </div>
+  `).join('');
+}
+
+function filterCat(el, cat) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts(cat);
+}
+
+function openDetail(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const inner = document.getElementById('productDetailInner');
+  inner.innerHTML = `
+    <div class="product-detail-visual ${p.bg}">
+      <span style="font-family:var(--serif);font-size:4rem;color:var(--sand);font-weight:300;opacity:0.4">${p.name.charAt(0)}</span>
+    </div>
+    <div class="product-detail-info">
+      <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:0.5rem">${p.badge}</div>
+      <h2>${p.name}</h2>
+      <div class="detail-price">${p.price}</div>
+      <div class="detail-desc">${p.detail}</div>
+      <div class="detail-section-title">Microbiome Profile</div>
+      <div class="detail-section-text">${p.microbiome}</div>
+      <div class="detail-section-title">Culinary Pairing</div>
+      <div class="detail-section-text">${p.pairing}</div>
+      <div class="detail-section-title">Ritual Integration</div>
+      <div class="detail-section-text">${p.ritual}</div>
+      <button class="btn btn-primary" style="margin-top:2rem;align-self:flex-start">Add to Cart — ${p.price}</button>
+    </div>
+  `;
+  document.getElementById('productDetail').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+  document.getElementById('productDetail').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ===== PAGE NAVIGATION =====
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active-link');
+    if (a.dataset.page === pageId) a.classList.add('active-link');
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  
+  // Close mobile menu
+  document.getElementById('navLinks').classList.remove('open');
+  
+  // Re-trigger reveal animations
+  setTimeout(() => {
+    document.querySelectorAll('#page-' + pageId + ' .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => checkReveal(), 100);
+    });
+  }, 50);
+  
+  // Render products on shop page
+  if (pageId === 'shop') renderProducts();
+}
+
+// ===== MOBILE NAV =====
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ===== SCROLL EFFECTS =====
+function checkReveal() {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  checkReveal();
+});
+
+// Close detail on ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDetail();
+});
+
+// Close detail on backdrop click
+document.getElementById('productDetail').addEventListener('click', function(e) {
+  if (e.target === this) closeDetail();
+});
+
+// Init
+renderProducts();
+checkReveal();
+window.addEventListener('load', checkReveal);
+</script>
+
+</body>
+</html>
