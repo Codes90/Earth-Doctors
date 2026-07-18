@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Earth Doctors — Fine Fermentation. Live Fire. Microbial Intelligence.</title>
+<meta name="description" content="Michelin-level fermentation, elemental live-fire cuisine, and microbiome education rooted in the wild intelligence of Mount Shasta. Retreats, ferments, courses, and private fire dining at Bunny Flats.">
+<link rel="canonical" href="https://earthdoctorsknow.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Earth Doctors — Fine Fermentation. Live Fire. Microbial Intelligence.">
+<meta property="og:description" content="Live-fire culinary immersions, small-batch ferments, and microbiome education at Bunny Flats, Mount Shasta.">
+<meta property="og:url" content="https://earthdoctorsknow.com/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1511497584788-876760111969?w=1200&q=80&auto=format&fit=crop">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1331,6 +1339,60 @@ body {
   background: linear-gradient(135deg, #1a2a3a 0%, #1c2a1f 50%, #1a1612 100%);
 }
 
+/* ===== YOUR PHOTOS =====
+   Drop your own photos into public/images/ using the filenames below and they
+   appear automatically (the gradients above remain as fallbacks until then).
+   See CONTENT-GUIDE.md for the full list. */
+.photo-philosophy { background-image: url('images/hero-philosophy.jpg'), linear-gradient(160deg, #1a2a1a 0%, #0f1a0f 30%, #1a1612 100%); }
+.photo-shop { background-image: url('images/hero-atelier.jpg'), linear-gradient(135deg, #3d2e1f 0%, #5a4030 40%, #4a3525 100%); }
+.photo-retreats { background-image: url('images/hero-retreats.jpg'), linear-gradient(135deg, #2a1a10 0%, #3d2a15 50%, #4a3020 100%); }
+.photo-education { background-image: url('images/hero-education.jpg'), linear-gradient(135deg, #2a3a2a 0%, #3d4d35 50%, #2d3d28 100%); }
+.photo-journal { background-image: url('images/hero-journal.jpg'), linear-gradient(135deg, #1a2a3a 0%, #1c2a1f 50%, #1a1612 100%); }
+.photo-contact { background-image: url('images/hero-contact.jpg'), linear-gradient(160deg, #1a2a1a 0%, #0f1a0f 30%, #1a1612 100%); }
+.photo-bookings { background-image: url('images/hero-bookings.jpg'), linear-gradient(135deg, #2a1a10 0%, #3d2a15 50%, #4a3020 100%); }
+/* The bg-* shorthand above resets size/position — re-assert cover for photo heroes */
+.photo-philosophy, .photo-shop, .photo-retreats, .photo-education,
+.photo-journal, .photo-contact, .photo-bookings {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ferment-item:hover .product-photo { transform: scale(1.03); }
+.product-card:hover .product-photo { transform: scale(1.04); }
+
+/* ===== FORM CONFIRMATION TOAST ===== */
+.site-toast {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--deep-earth);
+  color: var(--cream);
+  border: 1px solid var(--ember);
+  padding: 1.1rem 2.2rem;
+  z-index: 3000;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  max-width: min(560px, 90vw);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.site-toast.show { opacity: 1; }
+
 /* Emoji icon replacement for visual interest */
 .visual-icon {
   font-size: 3rem;
@@ -1350,19 +1412,12 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .ferments-showcase { grid-template-columns: repeat(2, 1fr); }
-  .products-grid { grid-template-columns: repeat(2, 1fr); }
-  .retreat-tiers { grid-template-columns: 1fr; }
-  .include-grid { grid-template-columns: repeat(2, 1fr); }
-  .founder-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .founder-visual { position: static; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .product-detail-inner { grid-template-columns: 1fr; }
+@media (max-width: 1300px) {
+  .nav { padding-left: 2rem; padding-right: 2rem; }
+  .nav.scrolled { padding-left: 2rem; padding-right: 2rem; }
+  .nav-links { gap: 1.5rem; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
   .nav-links.open {
@@ -1377,6 +1432,21 @@ body {
     z-index: 999;
   }
   .nav-links.open a { font-size: 1rem; color: var(--cream); }
+  .nav-links.open .nav-cta { font-size: 1rem !important; letter-spacing: 0.18em !important; }
+}
+@media (max-width: 1024px) {
+  .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .ferments-showcase { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .retreat-tiers { grid-template-columns: 1fr; }
+  .include-grid { grid-template-columns: repeat(2, 1fr); }
+  .founder-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .founder-visual { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .product-detail-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
   .section { padding: 4rem 1.5rem; }
   .hero h1 { font-size: 2rem; }
   .services-grid { grid-template-columns: 1fr; }
@@ -1405,13 +1475,14 @@ body {
     <span>Fine Fermentation & Live Fire</span>
   </div>
   <div class="nav-links" id="navLinks">
-    <a onclick="showPage('home')" data-page="home" class="active-link">Home</a>
-    <a onclick="showPage('philosophy')" data-page="philosophy">Philosophy</a>
-    <a onclick="showPage('shop')" data-page="shop">Atelier</a>
-    <a onclick="showPage('retreats')" data-page="retreats">Retreats</a>
-    <a onclick="showPage('education')" data-page="education">Education</a>
-    <a onclick="showPage('journal')" data-page="journal">Journal</a>
-    <a onclick="showPage('contact')" data-page="contact" class="nav-cta">Begin</a>
+    <a href="#" onclick="showPage('home');return false" data-page="home" class="active-link">Home</a>
+    <a href="#" onclick="showPage('philosophy');return false" data-page="philosophy">Philosophy</a>
+    <a href="#" onclick="showPage('shop');return false" data-page="shop">Atelier</a>
+    <a href="#" onclick="showPage('retreats');return false" data-page="retreats">Retreats</a>
+    <a href="#" onclick="showPage('bookings');return false" data-page="bookings">Bookings</a>
+    <a href="#" onclick="showPage('education');return false" data-page="education">Education</a>
+    <a href="#" onclick="showPage('journal');return false" data-page="journal">Journal</a>
+    <a href="#" onclick="showPage('contact');return false" data-page="contact" class="nav-cta">Begin</a>
   </div>
   <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -1428,7 +1499,9 @@ body {
     <style>
       #heroImage {
         background-color: var(--dark-forest);
+        /* Your photo (images/hero-home.jpg) shows first; stock image is the fallback */
         background-image:
+          url('images/hero-home.jpg'),
           url('https://images.unsplash.com/photo-1511497584788-876760111969?w=1920&q=80&auto=format&fit=crop');
         background-position: center 35%;
       }
@@ -1440,8 +1513,8 @@ body {
       <h1>Where Fire, Earth &amp; Microbes <em>Refine</em> the Human System</h1>
       <p class="hero-sub">Michelin-level fermentation, elemental live-fire cuisine, and microbiome education rooted in the wild intelligence of Mount Shasta.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" onclick="showPage('shop')">Explore the Ferments</a>
-        <a class="btn btn-ghost" onclick="showPage('retreats')">Enter the Retreat</a>
+        <a class="btn btn-primary" href="#" onclick="showPage('shop');return false">Explore the Ferments</a>
+        <a class="btn btn-ghost" href="#" onclick="showPage('retreats');return false">Enter the Retreat</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -1551,12 +1624,13 @@ body {
           <div class="section-label">From the Atelier</div>
           <h2 class="section-title">Featured <em>Ferments</em></h2>
         </div>
-        <a class="btn btn-dark" onclick="showPage('shop')">View All</a>
+        <a class="btn btn-dark" href="#" onclick="showPage('shop');return false">View All</a>
       </div>
       <div class="ferments-showcase reveal">
         <div class="ferment-item" onclick="showPage('shop')">
           <div class="ferment-visual">
             <div class="ferment-visual-inner bg-miso"><span class="visual-icon">𝕸</span></div>
+            <img class="product-photo" src="images/products/hatcho-style-miso.jpg" alt="Hatcho-Style Miso" loading="lazy" onerror="this.remove()">
             <div class="ferment-tag">18-Month Aged</div>
           </div>
           <h4>Hatcho-Style Miso</h4>
@@ -1566,6 +1640,7 @@ body {
         <div class="ferment-item" onclick="showPage('shop')">
           <div class="ferment-visual">
             <div class="ferment-visual-inner bg-koji"><span class="visual-icon">𝕶</span></div>
+            <img class="product-photo" src="images/products/shio-koji.jpg" alt="Shio Koji" loading="lazy" onerror="this.remove()">
             <div class="ferment-tag">Limited</div>
           </div>
           <h4>Shio Koji</h4>
@@ -1575,6 +1650,7 @@ body {
         <div class="ferment-item" onclick="showPage('shop')">
           <div class="ferment-visual">
             <div class="ferment-visual-inner bg-sauce"><span class="visual-icon">𝕱</span></div>
+            <img class="product-photo" src="images/products/fire-fermented-chili-sauce.jpg" alt="Fire-Fermented Chili" loading="lazy" onerror="this.remove()">
             <div class="ferment-tag">Seasonal</div>
           </div>
           <h4>Fire-Fermented Chili</h4>
@@ -1584,6 +1660,7 @@ body {
         <div class="ferment-item" onclick="showPage('shop')">
           <div class="ferment-visual">
             <div class="ferment-visual-inner bg-elixir"><span class="visual-icon">𝕰</span></div>
+            <img class="product-photo" src="images/products/adaptogen-kvass.jpg" alt="Adaptogen Kvass" loading="lazy" onerror="this.remove()">
             <div class="ferment-tag">New</div>
           </div>
           <h4>Adaptogen Kvass</h4>
@@ -1610,10 +1687,15 @@ body {
       <div class="section-label">Stay Connected</div>
       <h3>The Earth Doctors Dispatch</h3>
       <p>Seasonal fermentation insights, microbiome research, retreat announcements, and limited drops.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="Your email address">
-        <button>Subscribe</button>
-      </div>
+      <form class="newsletter-form" action="https://formsubmit.co/Earthdoctors@protonmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Dispatch Subscriber — earthdoctorsknow.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://codes90.github.io/Earth-Doctors/#subscribed">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
   </section>
 </div>
@@ -1621,7 +1703,7 @@ body {
 <!-- ===================== PAGE 2: PHILOSOPHY ===================== -->
 <div class="page" id="page-philosophy">
   <section class="hero" style="height:60vh;min-height:400px">
-    <div class="hero-bg bg-retreat"></div>
+    <div class="hero-bg bg-retreat photo-philosophy"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -1675,7 +1757,7 @@ body {
       <h2 class="section-title">This is Not Rustic <em>Homesteading</em>.<br>This is Elemental Fine Dining.</h2>
       <div class="divider" style="margin:2rem auto"></div>
       <p class="section-text" style="max-width:100%;margin:0 auto">Everything we create — from live-fire tasting menus to aged miso — is designed to restore digestive coherence and awaken sensory awareness. We bridge the gap between ancestral wisdom and modern microbiome science, between the sacred kitchen and the laboratory.</p>
-      <a class="btn btn-dark" style="margin-top:2.5rem" onclick="showPage('contact')">Begin Your Journey</a>
+      <a class="btn btn-dark" style="margin-top:2.5rem" href="#" onclick="showPage('contact');return false">Begin Your Journey</a>
     </div>
   </section>
 </div>
@@ -1683,7 +1765,7 @@ body {
 <!-- ===================== PAGE 3: SHOP / ATELIER ===================== -->
 <div class="page" id="page-shop">
   <section class="hero shop-hero">
-    <div class="hero-bg bg-miso"></div>
+    <div class="hero-bg bg-miso photo-shop"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -1743,7 +1825,7 @@ body {
 <!-- ===================== PAGE 4: RETREATS ===================== -->
 <div class="page" id="page-retreats">
   <section class="hero" style="height:60vh;min-height:400px">
-    <div class="hero-bg bg-fire"></div>
+    <div class="hero-bg bg-fire photo-retreats"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -1773,7 +1855,7 @@ body {
             <li>Morning stillness practice</li>
             <li>Take-home fermentation starter</li>
           </ul>
-          <a class="btn btn-primary" onclick="showPage('contact')">Reserve Your Spot</a>
+          <a class="btn btn-primary" href="#" onclick="showPage('bookings');return false">Reserve Your Spot</a>
         </div>
         <div class="retreat-card featured">
           <h3>5-Day Chef Intensive</h3>
@@ -1790,7 +1872,7 @@ body {
             <li>Guided fermentation garden tour</li>
             <li>Personal mentorship session</li>
           </ul>
-          <a class="btn btn-primary" onclick="showPage('contact')">Reserve Your Spot</a>
+          <a class="btn btn-primary" href="#" onclick="showPage('bookings');return false">Reserve Your Spot</a>
         </div>
         <div class="retreat-card">
           <h3>Private Group Experience</h3>
@@ -1805,7 +1887,7 @@ body {
             <li>Team or family immersion</li>
             <li>Exclusive location access</li>
           </ul>
-          <a class="btn btn-primary" onclick="showPage('contact')">Begin a Conversation</a>
+          <a class="btn btn-primary" href="#" onclick="showPage('bookings');return false">Begin a Conversation</a>
         </div>
       </div>
     </div>
@@ -1855,10 +1937,113 @@ body {
   </section>
 </div>
 
+<!-- ===================== PAGE: BOOKINGS ===================== -->
+<div class="page" id="page-bookings">
+  <section class="hero" style="height:50vh;min-height:350px">
+    <div class="hero-bg bg-fire photo-bookings"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Reserve Your Place</div>
+      <h1>Book Your <em>Immersion</em></h1>
+      <p class="hero-sub">Request dates for a retreat, private group experience, or fire-dining event. We confirm availability personally, within 48 hours.</p>
+    </div>
+  </section>
+
+  <section class="section section-navy">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <form class="contact-form" action="https://formsubmit.co/Earthdoctors@protonmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Booking Request — earthdoctorsknow.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://codes90.github.io/Earth-Doctors/#booked">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-group">
+            <label for="bk-name">Full Name</label>
+            <input type="text" id="bk-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="bk-email">Email</label>
+            <input type="email" id="bk-email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="bk-phone">Phone (Optional)</label>
+            <input type="tel" id="bk-phone" name="phone" placeholder="For scheduling calls">
+          </div>
+          <div class="form-group">
+            <label for="bk-experience">Experience</label>
+            <select id="bk-experience" name="experience" required>
+              <option value="">Select an experience</option>
+              <option>Weekend Immersion — $1,200 per person</option>
+              <option>5-Day Chef Intensive — $3,400 per person</option>
+              <option>Private Group Experience (4–12 guests)</option>
+              <option>Private Fire Dining / Catering</option>
+              <option>Not sure yet — help me choose</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bk-dates">Preferred Dates</label>
+            <input type="text" id="bk-dates" name="preferred_dates" placeholder="e.g. Late September, or Sept 25–27" required>
+          </div>
+          <div class="form-group">
+            <label for="bk-guests">Number of Guests</label>
+            <select id="bk-guests" name="guests" required>
+              <option value="">Select</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>More than 12</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bk-message">Anything Else</label>
+            <textarea id="bk-message" name="message" placeholder="Dietary needs, questions, occasion, experience level..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;margin-top:0.5rem">Request Booking</button>
+        </form>
+        <div class="contact-info">
+          <h3>How Booking Works</h3>
+          <p>Send your request with preferred dates. Within 48 hours we reply personally with availability, preparation details, and a secure link to confirm your reservation with a deposit. No payment is taken through this form.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Step 1</div>
+            <div class="contact-detail-value">Submit your booking request</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Step 2</div>
+            <div class="contact-detail-value">We confirm dates &amp; details by email within 48 hours</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Step 3</div>
+            <div class="contact-detail-value">Reserve with a deposit &amp; receive your welcome guide</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value"><a href="mailto:Earthdoctors@protonmail.com" style="color:inherit">Earthdoctors@protonmail.com</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Bunny Flats, Mount Shasta, California</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ===================== PAGE 5: EDUCATION ===================== -->
 <div class="page" id="page-education">
   <section class="hero" style="height:55vh;min-height:380px">
-    <div class="hero-bg bg-koji"></div>
+    <div class="hero-bg bg-koji photo-education"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -1944,12 +2129,12 @@ body {
         <div class="track-card">
           <h3>Chef Track</h3>
           <p>For culinary professionals seeking to integrate fermentation science, live-fire technique, and microbiome awareness into their practice. Includes all five course levels plus a private mentorship intensive and retreat immersion.</p>
-          <a class="btn btn-dark" onclick="showPage('contact')">Apply</a>
+          <a class="btn btn-dark" href="#" onclick="showPage('contact');return false">Apply</a>
         </div>
         <div class="track-card">
           <h3>Wellness Practitioner Track</h3>
           <p>For health coaches, nutritionists, and practitioners who want to incorporate evidence-based fermentation protocols into client work. Focused on microbiome science, digestive reset design, and food-as-medicine frameworks.</p>
-          <a class="btn btn-dark" onclick="showPage('contact')">Apply</a>
+          <a class="btn btn-dark" href="#" onclick="showPage('contact');return false">Apply</a>
         </div>
       </div>
     </div>
@@ -1959,7 +2144,7 @@ body {
 <!-- ===================== PAGE 6: JOURNAL ===================== -->
 <div class="page" id="page-journal">
   <section class="hero" style="height:50vh;min-height:350px">
-    <div class="hero-bg bg-journal"></div>
+    <div class="hero-bg bg-journal photo-journal"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -2022,7 +2207,7 @@ body {
 <!-- ===================== PAGE 7: CONTACT ===================== -->
 <div class="page" id="page-contact">
   <section class="hero" style="height:45vh;min-height:320px">
-    <div class="hero-bg bg-retreat"></div>
+    <div class="hero-bg bg-retreat photo-contact"></div>
     <div class="hero-overlay"></div>
     <div class="hero-texture"></div>
     <div class="hero-content">
@@ -2035,19 +2220,24 @@ body {
   <section class="section section-navy">
     <div class="container">
       <div class="contact-grid reveal">
-        <div class="contact-form">
+        <form class="contact-form" action="https://formsubmit.co/Earthdoctors@protonmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Inquiry — earthdoctorsknow.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://codes90.github.io/Earth-Doctors/#sent">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="Your name">
+            <label for="ct-name">Full Name</label>
+            <input type="text" id="ct-name" name="name" placeholder="Your name" required>
           </div>
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com">
+            <label for="ct-email">Email</label>
+            <input type="email" id="ct-email" name="email" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
-            <label>Interest</label>
-            <select>
-              <option>Select an area of interest</option>
+            <label for="ct-interest">Interest</label>
+            <select id="ct-interest" name="interest" required>
+              <option value="">Select an area of interest</option>
               <option>Retreat Experience</option>
               <option>Private Fire Dining / Catering</option>
               <option>One-on-One Mentorship</option>
@@ -2058,17 +2248,17 @@ body {
             </select>
           </div>
           <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us about your interest or ask a question..."></textarea>
+            <label for="ct-message">Message</label>
+            <textarea id="ct-message" name="message" placeholder="Tell us about your interest or ask a question..." required></textarea>
           </div>
-          <button class="btn btn-primary" style="align-self:flex-start;margin-top:0.5rem">Send Inquiry</button>
-        </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;margin-top:0.5rem">Send Inquiry</button>
+        </form>
         <div class="contact-info">
           <h3>Earth Doctors</h3>
           <p>We are based at the foot of Mount Shasta — in the forest, by the fire, among the ferments. All retreats take place on-site at Bunny Flats. Private dining and catering experiences can be arranged at your location.</p>
           <div class="contact-detail">
             <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-value">Earthdoctors@protonmail.com</div>
+            <div class="contact-detail-value"><a href="mailto:Earthdoctors@protonmail.com" style="color:inherit">Earthdoctors@protonmail.com</a></div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-label">Location</div>
@@ -2102,32 +2292,32 @@ body {
       <div>
         <h4>Navigate</h4>
         <ul class="footer-links">
-          <li><a onclick="showPage('home')">Home</a></li>
-          <li><a onclick="showPage('philosophy')">Philosophy</a></li>
-          <li><a onclick="showPage('shop')">Atelier</a></li>
-          <li><a onclick="showPage('retreats')">Retreats</a></li>
-          <li><a onclick="showPage('education')">Education</a></li>
-          <li><a onclick="showPage('journal')">Journal</a></li>
+          <li><a href="#" onclick="showPage('home');return false">Home</a></li>
+          <li><a href="#" onclick="showPage('philosophy');return false">Philosophy</a></li>
+          <li><a href="#" onclick="showPage('shop');return false">Atelier</a></li>
+          <li><a href="#" onclick="showPage('retreats');return false">Retreats</a></li>
+          <li><a href="#" onclick="showPage('education');return false">Education</a></li>
+          <li><a href="#" onclick="showPage('journal');return false">Journal</a></li>
         </ul>
       </div>
       <div>
         <h4>Services</h4>
         <ul class="footer-links">
-          <li><a onclick="showPage('retreats')">Elemental Retreats</a></li>
-          <li><a onclick="showPage('shop')">Fermentation Atelier</a></li>
-          <li><a onclick="showPage('contact')">Private Dining</a></li>
-          <li><a onclick="showPage('contact')">Garden Consulting</a></li>
-          <li><a onclick="showPage('contact')">Mentorship</a></li>
-          <li><a onclick="showPage('education')">Courses</a></li>
+          <li><a href="#" onclick="showPage('retreats');return false">Elemental Retreats</a></li>
+          <li><a href="#" onclick="showPage('shop');return false">Fermentation Atelier</a></li>
+          <li><a href="#" onclick="showPage('contact');return false">Private Dining</a></li>
+          <li><a href="#" onclick="showPage('contact');return false">Garden Consulting</a></li>
+          <li><a href="#" onclick="showPage('contact');return false">Mentorship</a></li>
+          <li><a href="#" onclick="showPage('education');return false">Courses</a></li>
         </ul>
       </div>
       <div>
         <h4>Connect</h4>
         <ul class="footer-links">
-          <li><a>Earthdoctors@protonmail.com</a></li>
+          <li><a href="mailto:Earthdoctors@protonmail.com">Earthdoctors@protonmail.com</a></li>
           <li><a>Facebook</a></li>
           <li><a>Instagram</a></li>
-          <li><a>The Dispatch (Newsletter)</a></li>
+          <li><a href="#" onclick="showPage('home');return false">The Dispatch (Newsletter)</a></li>
         </ul>
       </div>
     </div>
@@ -2218,6 +2408,14 @@ const products = [
   }
 ];
 
+// ===== PRODUCT PHOTOS =====
+// Drop a photo into public/images/products/ named after the product
+// (lowercase, spaces become dashes, e.g. "Shio Koji" -> shio-koji.jpg)
+// and it automatically replaces the colored placeholder.
+function photoSlug(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 // ===== RENDER PRODUCTS =====
 function renderProducts(filter = 'all') {
   const grid = document.getElementById('productsGrid');
@@ -2228,6 +2426,7 @@ function renderProducts(filter = 'all') {
         <div class="product-image-inner ${p.bg}">
           <span style="font-family:var(--serif);font-size:2rem;color:var(--sand);font-weight:300;opacity:0.5">${p.name.charAt(0)}</span>
         </div>
+        <img class="product-photo" src="images/products/${photoSlug(p.name)}.jpg" alt="${p.name}" loading="lazy" onerror="this.remove()">
         <div class="product-badge ${p.badgeClass}">${p.badge}</div>
       </div>
       <h3>${p.name}</h3>
@@ -2251,6 +2450,7 @@ function openDetail(id) {
   inner.innerHTML = `
     <div class="product-detail-visual ${p.bg}">
       <span style="font-family:var(--serif);font-size:4rem;color:var(--sand);font-weight:300;opacity:0.4">${p.name.charAt(0)}</span>
+      <img class="product-photo" src="images/products/${photoSlug(p.name)}.jpg" alt="${p.name}" onerror="this.remove()">
     </div>
     <div class="product-detail-info">
       <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:0.5rem">${p.badge}</div>
@@ -2337,6 +2537,39 @@ document.addEventListener('keydown', e => {
 document.getElementById('productDetail').addEventListener('click', function(e) {
   if (e.target === this) closeDetail();
 });
+
+// ===== FORM THANK-YOU NOTICES =====
+// After a form submits, FormSubmit redirects back here with a hash (#sent, #booked, #subscribed)
+const toastMessages = {
+  '#booked': 'Thank you — your booking request has been received. We will confirm dates and details by email within 48 hours.',
+  '#sent': 'Thank you — your message has been sent. We respond within 48 hours.',
+  '#subscribed': 'Welcome to The Dispatch — you are on the list.'
+};
+if (toastMessages[location.hash]) {
+  const toast = document.createElement('div');
+  toast.className = 'site-toast';
+  toast.setAttribute('role', 'status');
+  toast.textContent = toastMessages[location.hash];
+  document.body.appendChild(toast);
+  // Double rAF: guarantees the fade transition runs, and (since rAF doesn't
+  // fire in hidden tabs) defers the 9s countdown until the tab is visible
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 700);
+    }, 9000);
+  }));
+  history.replaceState(null, '', location.pathname + location.search);
+}
+
+// Point form redirects (_next) back at whichever domain the visitor is on,
+// so they work on github.io, the custom domain, and localhost alike
+if (location.protocol === 'http:' || location.protocol === 'https:') {
+  document.querySelectorAll('input[name="_next"]').forEach(inp => {
+    inp.value = location.origin + location.pathname + inp.value.slice(inp.value.indexOf('#'));
+  });
+}
 
 // Init
 renderProducts();

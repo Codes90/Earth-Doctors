@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Earth Doctors</title>
+<style>body{background:#1a1612;color:#f5f0e8;font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;min-height:100vh}</style>
+<script>
+// Single-page site: send any unknown path back to the home page.
+// Works both at earthdoctorsknow.com/ and at codes90.github.io/Earth-Doctors/.
+if (location.protocol === 'http:' || location.protocol === 'https:') {
+  var base = location.hostname.endsWith('github.io')
+    ? '/' + location.pathname.split('/')[1] + '/'
+    : '/';
+  location.replace(base);
+}
+</script>
+</head>
+<body>
+<p>Returning you to Earth Doctors&hellip;</p>
+<noscript><p><a href="/" style="color:#f5f0e8;text-decoration:underline">Continue to the home page</a></p></noscript>
+</body>
+</html>
