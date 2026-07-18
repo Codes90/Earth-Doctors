@@ -13,6 +13,7 @@ on the site automatically (until then, the site shows its built-in colors):
 | `hero-education.jpg` | Education page banner                  |
 | `hero-journal.jpg`   | Journal page banner                    |
 | `hero-contact.jpg`   | Contact page banner                    |
+| `founder.jpg`        | About section portrait on the home page |
 
 Recommended: wide landscape photos, at least 1920px across, JPG format.
 Product photos go in the `products/` subfolder — see the README there.
