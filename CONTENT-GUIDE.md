@@ -37,23 +37,23 @@ journal entry is plain text in that file:
 ## 3. Correspondence (contact, bookings, newsletter)
 
 All three forms (Contact, Bookings, Newsletter) deliver to
-**Earthdoctors@protonmail.com** via [FormSubmit](https://formsubmit.co) — free,
+**a.u.perspective@gmail.com** via [FormSubmit](https://formsubmit.co) — free,
 no account needed.
 
 **One-time activation:** the first time anyone submits a form, FormSubmit
-emails Earthdoctors@protonmail.com a confirmation link. Click it once and all
+emails a.u.perspective@gmail.com a confirmation link. Click it once and all
 future submissions arrive normally. Do this yourself right after the site goes
 live: submit the contact form, then check the inbox (and spam folder).
 
 **Recommended after activation (spam protection):** FormSubmit's activation
 email includes a random-string alias for your address (it also appears in your
 FormSubmit dashboard). Swap it into the three form actions in
-`public/index.html` — replace `formsubmit.co/Earthdoctors@protonmail.com`
+`public/index.html` — replace `formsubmit.co/a.u.perspective@gmail.com`
 with `formsubmit.co/YOUR-ALIAS-STRING` — so spam bots can't harvest the form
 endpoint. Everything else keeps working unchanged.
 
 **To change the destination email:** in `public/index.html`, find-and-replace
-every occurrence of `Earthdoctors@protonmail.com` with the new address
+every occurrence of `a.u.perspective@gmail.com` with the new address
 (9 occurrences: 3 FormSubmit form actions plus 3 mailto links where the
 address appears in both the link target and the visible text), then complete
 the FormSubmit activation again from the new inbox.

@@ -19,6 +19,6 @@ Product photos go in the `products/` subfolder — see the README there.
 
 Bonus after adding `hero-home.jpg`: in `public/index.html`, update the
 `og:image` meta tag (near the top) to
-`https://earthdoctorsknow.com/images/hero-home.jpg` so social-media link
+`https://earth-doctors.com/images/hero-home.jpg` so social-media link
 previews use your photo, and optionally delete the Unsplash fallback line in
 the `#heroImage` style block.

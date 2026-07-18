@@ -2,7 +2,7 @@
 
 **Fine Fermentation. Live Fire. Microbial Intelligence.**
 
-Live site: **https://earthdoctorsknow.com** (also https://codes90.github.io/Earth-Doctors/)
+Live site: **https://earth-doctors.com** (also https://codes90.github.io/Earth-Doctors/)
 
 Want to change pictures, text, prices, or the contact email? See
 **[CONTENT-GUIDE.md](CONTENT-GUIDE.md)** — no web-development knowledge needed.
@@ -27,7 +27,7 @@ Two halves: turn on GitHub Pages, then point the GoDaddy domain at it.
 
 **B. Point the GoDaddy domain at GitHub:**
 
-1. Sign in at godaddy.com → **My Products** → `earthdoctorsknow.com` → **DNS**.
+1. Sign in at godaddy.com → **My Products** → `earth-doctors.com` → **DNS**.
 2. Delete any existing **A** records and turn off any **Forwarding** for the domain.
 3. Add these four **A** records (Name: `@`, TTL: default):
    - `185.199.108.153`
@@ -38,13 +38,13 @@ Two halves: turn on GitHub Pages, then point the GoDaddy domain at it.
    default) and **edit** its Value to `codes90.github.io` — or add it if
    missing. Leave the `_domainconnect` CNAME alone.
 5. Wait for DNS to spread (usually minutes, up to an hour). You can check at
-   https://dnschecker.org by looking up `earthdoctorsknow.com` — it should
+   https://dnschecker.org by looking up `earth-doctors.com` — it should
    show the 185.199.x.x addresses.
 6. Back in the GitHub repo: **Settings → Pages** → **Custom domain** → type
-   `earthdoctorsknow.com` → **Save**. Wait for the green check.
+   `earth-doctors.com` → **Save**. Wait for the green check.
 7. Tick **Enforce HTTPS** (the checkbox appears once the certificate is
    issued, usually within the hour). Done — the site now answers at
-   https://earthdoctorsknow.com, and the github.io address redirects to it.
+   https://earth-doctors.com, and the github.io address redirects to it.
 
 ## Local preview
 

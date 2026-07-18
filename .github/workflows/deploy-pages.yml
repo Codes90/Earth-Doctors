@@ -26,7 +26,7 @@ jobs:
 
       # One-time setup: this fails until Pages is enabled in the repo
       # (Settings -> Pages -> Build and deployment -> Source: "GitHub Actions").
-      # The custom domain (earthdoctorsknow.com) is also set on that page, once.
+      # The custom domain (earth-doctors.com) is also set on that page, once.
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
